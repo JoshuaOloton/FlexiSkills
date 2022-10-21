@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace FlexiSkills.Models.EBPortal
+{
+    [Table("DirectInsert_old")]
+    public partial class DirectInsertOld
+    {
+        [Key]
+        [Column("sn")]
+        public int Sn { get; set; }
+        [Column("UTMENUMBER")]
+        [StringLength(20)]
+        [Unicode(false)]
+        public string? Utmenumber { get; set; }
+        [Column("NAME")]
+        [StringLength(3500)]
+        public string? Name { get; set; }
+        [Column("PROGRAM")]
+        [StringLength(3500)]
+        public string? Program { get; set; }
+        [Column("JAMB_COMBINATION")]
+        [StringLength(3500)]
+        public string? JambCombination { get; set; }
+        [Column("JAMB_MATCHEDCOURSES")]
+        [StringLength(3500)]
+        public string? JambMatchedcourses { get; set; }
+        [Column("WRONGSUBJECTCOMBINATION")]
+        [StringLength(3500)]
+        public string? Wrongsubjectcombination { get; set; }
+        [Column("JAMBSCORE")]
+        public int? Jambscore { get; set; }
+        [Column("JAMBGRADE")]
+        public int? Jambgrade { get; set; }
+        [Column("OLEVEL")]
+        [StringLength(3500)]
+        public string? Olevel { get; set; }
+        [Column("OLEVEL_MATCHEDCOURSES")]
+        [StringLength(3500)]
+        public string? OlevelMatchedcourses { get; set; }
+        [Column("OLEVELSCORE")]
+        public int? Olevelscore { get; set; }
+        [Column("AGGREGATE")]
+        public int? Aggregate { get; set; }
+        [Column("CERTIFICATEMISMATCH")]
+        [StringLength(3500)]
+        public string? Certificatemismatch { get; set; }
+        [Column("STATUS")]
+        [StringLength(3500)]
+        public string? Status { get; set; }
+        [Column("TOTALSELECTEDOLEVEL")]
+        public int? Totalselectedolevel { get; set; }
+    }
+}
