@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media print {
+    body {
+/*        background-color: blue;*/
+    }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#main::before {
+    content: "";
+    background-image: url("https://portal.yabatech.edu.ng/portal/assets/icons/logoyct.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    inset: 20%;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+th, td {
+    text-align: left;
+}
+
+btn {
+    border: 3px black solid;
+}
+
+div.text-center {
+    padding-bottom: 3em;
+}
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 30px 45px 45px 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: none;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form button:hover, .form button:active, .form button:focus {
+    background: #43A047;
+}
+
+#logout {
+    font-size: 15px;
+    width: 100%;
+    text-align: left;
+    background-color: white;
+    border: none;
+}
+
+#logout:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn {
+    border: 1px solid grey;
+    background-color: #f0ede9;
+    opacity: 0.8;
+    color: black;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+.text-center {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.logo {
+    content: url("https://portal.yabatech.edu.ng/portal/assets/icons/logoyct.png");
+    width: 120px;
+    margin: 0 auto 20px auto;
+}
+
+div.nav-logo {
+    content: url("https://portal.yabatech.edu.ng/portal/assets/icons/logoyct.png");
+    width: 40px;
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+

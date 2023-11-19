@@ -1,0 +1,20 @@
+﻿@page
+@model FlexiSkills.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-page">
+    <div class="form">
+              
+        <div class="logo"></div>
+        <form method="post"
+              onsubmit="authFormSubmit()">
+            <input asp-for="Model.MatricNo" type="text" placeholder="Matric No." required/>
+			<span asp-validation-for="Model.MatricNo" class="text-danger"></span>
+            <input asp-for="Model.Password" type="password" placeholder="Password" required />
+            <span asp-validation-for="Model.Password" class="text-danger"></span>
+            <button id="submit-btn">login</button>
+        </form>
+    </div>
+</div>

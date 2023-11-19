@@ -1,0 +1,106 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center" id="main">
+    <div id="student-info">
+        <h2 style="font-weight: bolder; font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">
+            YABA COLLEGE OF TECHNOLOGY
+        </h2>
+        <p>@Model.Student.School</p>
+        <p>@Model.Student.Department</p>
+        <p>PROGRAM: @Model.Student.Programme</p>
+
+        <span style="float: left;">NAME: @Model.Student.Firstname @Model.Student.Othername @Model.Student.Surname</span> 
+        <span style="float: right;">MATRIC NUMBER: @Model.Student.Matricnum </span>
+        <br />   
+        <br />
+    </div>
+
+     @if (Model.SubmittedRecord.AmountPaid >= Model.SubmittedRecord.TotalFeesDue && Model.SubmittedRecord.TotalFeesDue > 0)
+    {
+        <table class="table" id="course-table" width="50px">
+            <caption>Your courses</caption>
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Course Code</th>
+                    <th>Course Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var cs in Model.SubmittedRecord.Courses)
+                {
+                    <tr>
+                        <td class="hmmm">@cs.CourseTitle</td>
+                        <td>@cs.CourseCode</td>
+                        <td>@cs.CourseUnit</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (Model.SubmittedRecord.FinalSubmission == 0)
+        {
+            <a asp-page="/Index" asp-page-handler="Submit" class="btn add-course">
+                <i class="bi bi-upload"></i>
+                Submit Courses
+            </a>
+        }   
+        @*else
+        {
+            <a asp-page-handler="AddCoursesAfterPayment" class="btn add-course">
+                <i class="bi bi-plus"></i>
+                Add Courses
+            </a>
+        }*@
+    }
+    else
+    {
+        <form method="POST" id="myTable course-form">
+            <table class="table" id="">
+                <caption>Your courses</caption>
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Course Code</th>
+                        <th>Course Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var cs in Model.SubmittedRecord.Courses)
+                    {
+                        <tr>
+                            <td class="hmmm">@cs.CourseTitle</td>
+                            <td>@cs.CourseCode</td>
+                            <td>@cs.CourseUnit</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @*<input type="hidden" class"hiddenfield" name="virus1" value=@Model.Base64Encode(Model.Student.Email.Trim()) />
+            <input type="hidden" class"hiddenfield" name="virus2" value=@Model.Base64Encode(Model.Student.Phone.Trim()) />
+            <input type="hidden" class"hiddenfield" name="virus3" value=@Model.Base64Encode(Model.TotalFeesDue.ToString().Trim()) />
+            <input type="hidden" class"hiddenfield" name="virus4" value=@Model.Base64Encode(Model.Student.Acadsession.Trim()) />
+            <input type="hidden" class"hiddenfield" name="virus5" value=@Model.Base64Encode($"ODFEL LEARNING FEES FOR {@Model.Student.Surname.Trim()} {@Model.Student.Firstname.Trim()}") />
+            <input type="hidden" class"hiddenfield" name="virus6" value=@Model.Base64Encode(Model.Student.ProgrammeType.Trim()) />
+            <input type="hidden" class"hiddenfield" name="virus7" value=@Model.Base64Encode(Model.Student.Surname.Trim() + " " + @Model.Student.Firstname.Trim()) />
+            <input type="hidden" class"hiddenfield" name="virus8" value=@Model.Base64Encode(new Random().Next().ToString()) />
+            <input type="hidden" class"hiddenfield" name="virus9" value=@Model.Base64Encode("ODFEL LEARNING FEES") />
+            <input type="hidden" class"hiddenfield" name="virus10" value=@Model.Base64Encode("5") />
+            <input type="hidden" class"hiddenfield" name="virus11" value=@Model.Base64Encode(Model.Student.Matricnum.Trim()) />*@
+
+            <a asp-page="/Generate" class="btn add-course">Edit Courses</a>
+            <button class="btn">Generate Fees</button>
+
+        </form>
+    }
+    <br />
+    <span style="float: left;">fees status: 
+        @Html.Raw((Model.SubmittedRecord.AmountPaid >= Model.SubmittedRecord.TotalFeesDue && Model.SubmittedRecord.TotalFeesDue > 0) ? "<strong class=\"text-success\">PAYMENT COMPLETE</strong>" : "<strong class=\"text-danger\">PAYMENT INCOMPLETE</strong>")
+    </span>
+    <span style="float: right;">course registration status: 
+        @Html.Raw((Model.SubmittedRecord.FinalSubmission == 1) ? "<strong class=\"text-success\">REGISTERED</strong>" : "<strong class=\"text-danger\">NOT REGISTERED</strong>")
+    </span>
+</div>

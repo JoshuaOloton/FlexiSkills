@@ -1,0 +1,9 @@
+@media print {
+    body *:not(#print-main):not(#print-main, *) {
+        visibility: hidden;
+    }
+
+    #print-main {
+        background-color: red;
+    }
+}

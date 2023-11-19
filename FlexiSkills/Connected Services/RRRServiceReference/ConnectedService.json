@@ -1,0 +1,16 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "https://portal.yabatech.edu.ng/paymentsys/webservice1.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, RRRServiceReference"
+    ],
+    "targetFramework": "net6.0",
+    "typeReuseMode": "Specified"
+  }
+}

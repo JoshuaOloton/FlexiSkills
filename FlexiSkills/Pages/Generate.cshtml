@@ -1,0 +1,127 @@
+﻿@page
+@model FlexiSkills.Pages.GenerateModel
+@{
+    ViewData["Title"] = "Course Selection";
+}
+
+<div class="text-center" id="main">
+    <h2 style="font-weight: bolder; font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">
+        YABA COLLEGE OF TECHNOLOGY
+    </h2>
+    <p>@Model.VwCourses.First().School</p>
+    <p>@Model.VwCourses.First().Department</p>
+    <p>PROGRAM: @Model.Student.Programme</p>
+
+
+    <span style="float: left;">NAME: @Model.Student.Firstname @Model.Student.Othername @Model.Student.Surname</span>
+    <span style="float: right;">MATRIC NUMBER: @Model.Student.Matricnum </span>
+    <br />
+    <br />
+
+    @if (Model.SubmittedRecord == null)
+    {
+        <form action="" method="POST" id="course-form">
+            <table class="table table-hover">
+                <caption>Select your courses</caption>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"/></th>
+                        <th>Course Title</th>
+                        <th>Course Code</th>
+                        <th>Course Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model.COCourses)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="@course.CourseCode"
+                                       name="CourseCode" value="@course.CourseCode">
+                            </td>
+                            <td>@course.CourseTitle</td>
+                            <td>@course.CourseCode</td>
+                            <td>@course.CourseUnit</td>
+                        </tr>
+                    }
+                    @foreach (var course in Model.VwCourses)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="@course.CourseCode"
+                                    name="CourseCode" value="@course.CourseCode">
+                            </td>
+                            <td>@course.CourseTitle</td>
+                            <td><label for="@course.CourseCode">@course.CourseCode</label></td>
+                            <td>@course.CourseUnit</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <input type="submit" value="Select Courses" class="btn">
+        </form>
+    }
+    else
+    {
+        <form action="" method="POST" id="myTable course-form">
+            <table class="table table-hover cell-border">
+                <caption>Select your courses</caption>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"/></th>
+                        <th>Course Title</th>
+                        <th>Course Code</th>
+                        <th>Course Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var course in Model.COCourses)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="checkbox" id="@course.CourseCode"
+                                       name="CourseCode" value="@course.CourseCode">
+                            </td>
+                            <td>@course.CourseTitle</td>
+                            <td>@course.CourseCode</td>
+                            <td>@course.CourseUnit</td>
+                        </tr>
+                    }
+                    @foreach (var course in Model.VwCourses)
+                    {
+                        // courses already selected should have a checked checkbox
+                        @if (Model.SubmittedRecord != null && Model.SubmittedRecord.Courses.Where(
+                            x => x.CourseCode == course.CourseCode && x.CourseTitle == course.CourseTitle).SingleOrDefault() == null)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="checkbox" id="@course.CourseCode"
+                                        name="CourseCode" value="@course.CourseCode">
+                                </td>
+                                <td>@course.CourseTitle</td>
+                                <td>@course.CourseCode</td>
+                                <td>@course.CourseUnit</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="checkbox" id="@course.CourseCode"
+                                        name="CourseCode" value="@course.CourseCode" checked>
+                                </td>
+                                <td>@course.CourseTitle</td>
+                                <td>@course.CourseCode</td>
+                                <td>@course.CourseUnit</td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+            <input type="submit" value="Select Courses" class="btn">
+        </form>
+    }
+
+</div>
